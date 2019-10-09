@@ -57,11 +57,6 @@ export const calendarStyle = css`
     background: #ccc;
   }
 
-  .calendar__day-button[previous-month],
-  .calendar__day-button[next-month] {
-    color: #ddd;
-  }
-
   .calendar__day-button:hover {
     border: 1px solid green;
   }

@@ -38,4 +38,9 @@ describe('<lion-input>', () => {
     expect(el.getAttribute('type')).to.equal('foo');
     expect(el.inputElement.getAttribute('type')).to.equal('foo');
   });
+
+  it('is accessible', async () => {
+    const el = await fixture(`<lion-input><label slot="label">Label</label></lion-input>`);
+    await expect(el).to.be.accessible();
+  });
 });
