@@ -38,6 +38,9 @@
     "@lion/field": "^0.3.1"
   },
   "devDependencies": {
+    "@lion/localize": "^0.4.19",
+    "@lion/validate": "^0.2.35",
+    "@lion/form": "^0.1.66",
     "@open-wc/demoing-storybook": "^0.2.0",
     "@open-wc/testing": "^2.3.4"
   }
