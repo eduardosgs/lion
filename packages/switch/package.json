@@ -1,7 +1,7 @@
 {
   "name": "@lion/switch",
   "version": "0.0.1",
-  "descriotion": "TODO: add",
+  "description": "TODO: add",
   "author": "ing-bank",
   "homepage": "https://github.com/ing-bank/lion/",
   "license": "MIT",
@@ -43,6 +43,6 @@
     "@lion/validate": "^0.2.35",
     "@open-wc/demoing-storybook": "^0.2.0",
     "@open-wc/testing": "^2.3.4",
-    "sinon": "^7.5.0"
+    "sinon": "^7.2.2"
   }
 }
