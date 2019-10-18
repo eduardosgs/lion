@@ -4,11 +4,6 @@ import { html, css } from '@lion/core';
 export class LionButtonSwitch extends LionButton {
   static get properties() {
     return {
-      readOnly: {
-        type: Boolean,
-        reflect: true,
-        attribute: 'readonly',
-      },
       checked: {
         type: Boolean,
         reflect: true,
