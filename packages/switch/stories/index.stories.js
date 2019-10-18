@@ -6,19 +6,11 @@ import { LocalizeMixin } from '@lion/localize';
 import '../lion-input-switch.js';
 import '@lion/form/lion-form.js';
 
-storiesOf('Switches|Switch', module)
-  .add(
-    'Default',
-    () => html`
-      <lion-input-switch></lion-input-switch>
-    `,
-  )
+storiesOf('Forms|Switch', module)
   .add(
     'All text slots',
     () => html`
-      <lion-input-switch label="Label" help-text="Help text">
-        <div slot="after">After</div>
-      </lion-input-switch>
+      <lion-input-switch label="Label" help-text="Help text"> </lion-input-switch>
     `,
   )
   .add('Validation', () => {
@@ -61,7 +53,7 @@ storiesOf('Switches|Switch', module)
                   </lion-input-switch>
                   <lion-input-switch
                     name="newsletterCheck"
-                    label="Subscribe to newsletter"
+                    label="* Subscribe to newsletter"
                     .infoValidators="${[isTrueValidator()]}"
                   >
                   </lion-input-switch>
@@ -75,8 +67,6 @@ storiesOf('Switches|Switch', module)
 
           submit() {
             const form = this.shadowRoot.querySelector('#postsForm');
-            const validateElement = this.shadowRoot.querySelector('[name=emailAddress]');
-            validateElement.validate();
             if (form.errorState === false) {
               console.log(form.serializeGroup());
             }
