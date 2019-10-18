@@ -39,7 +39,9 @@ export class LionInputSwitch extends ChoiceInputMixin(LionField) {
     this._syncButtonSwitch();
   }
 
-  get _buttonSwitch() {
+  // TODO: should be replaced by "_inputNode"
+  // after the next breaking change
+  get _buttonSwitchNode() {
     return this.querySelector('[slot=input]');
   }
 
@@ -47,17 +49,17 @@ export class LionInputSwitch extends ChoiceInputMixin(LionField) {
     this._buttonCheckedHandler = e => {
       this.checked = e.detail;
     };
-    this._buttonSwitch.addEventListener('checked-changed', this._buttonCheckedHandler);
+    this._buttonSwitchNode.addEventListener('checked-changed', this._buttonCheckedHandler);
   }
 
   _cleanButtonSwitch() {
     if (this._buttonCheckedHandler) {
-      this._buttonSwitch.removeEventListener('checked-changed', this._buttonCheckedHandler);
+      this._buttonSwitchNode.removeEventListener('checked-changed', this._buttonCheckedHandler);
       this._buttonCheckedHandler = null;
     }
   }
 
   _syncButtonSwitch() {
-    this._buttonSwitch.checked = this.checked;
+    this._buttonSwitchNode.checked = this.checked;
   }
 }
