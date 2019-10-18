@@ -27,6 +27,11 @@ describe('lion-button-switch', () => {
     expect(el.getAttribute('type')).to.equal('button');
   });
 
+  it('should have disabled=false by default', () => {
+    expect(el.disabled).to.equal(false);
+    expect(el.hasAttribute('disabled')).to.be.false;
+  });
+
   it('should have checked=false by default', () => {
     expect(el.checked).to.equal(false);
     expect(el.hasAttribute('checked')).to.be.false;
@@ -50,6 +55,27 @@ describe('lion-button-switch', () => {
     expect(el.hasAttribute('checked')).to.be.false;
   });
 
+  it('should not toggle the valoue of "checked" on click if disabled', async () => {
+    // given
+    el.disabled = true;
+    expect(el.checked).to.be.false;
+    // when
+    el.click();
+    await el.updateComplete;
+    // then
+    expect(el.checked).to.be.false;
+    expect(el.hasAttribute('checked')).to.be.false;
+    // given
+    el.disabled = true;
+    el.checked = true;
+    // when
+    el.click();
+    await el.updateComplete;
+    // then
+    expect(el.checked).to.be.true;
+    expect(el.hasAttribute('checked')).to.be.true;
+  });
+
   it('should dispatch "checked-changed" event', () => {
     // given
     const handlerSpy = sinon.spy();
@@ -69,6 +95,17 @@ describe('lion-button-switch', () => {
     };
     checkCall(handlerSpy.getCall(0), true);
     checkCall(handlerSpy.getCall(1), false);
+  });
+
+  it('should not dispatch "checked-changed" event if disabled', () => {
+    // given
+    const handlerSpy = sinon.spy();
+    el.disabled = true;
+    el.addEventListener('checked-changed', handlerSpy);
+    // when
+    el.click();
+    // then
+    expect(handlerSpy.called).to.be.false;
   });
 
   describe('a11y', () => {

@@ -1,10 +1,30 @@
-import { html } from '@lion/core';
+import { html, css } from '@lion/core';
 import { LionField } from '@lion/field';
 import { ChoiceInputMixin } from '@lion/choice-input';
 
 import '../lion-button-switch.js';
 
 export class LionInputSwitch extends ChoiceInputMixin(LionField) {
+  static get properties() {
+    return {
+      disabled: {
+        type: Boolean,
+        reflect: true,
+      },
+    };
+  }
+
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        :host([disabled]) {
+          color: #adadad;
+        }
+      `,
+    ];
+  }
+
   get slots() {
     return {
       ...super.slots,
@@ -61,5 +81,6 @@ export class LionInputSwitch extends ChoiceInputMixin(LionField) {
 
   _syncButtonSwitch() {
     this._buttonSwitchNode.checked = this.checked;
+    this._buttonSwitchNode.disabled = this.disabled;
   }
 }

@@ -4,6 +4,10 @@ import { html, css } from '@lion/core';
 export class LionButtonSwitch extends LionButton {
   static get properties() {
     return {
+      disabled: {
+        type: Boolean,
+        reflect: true,
+      },
       checked: {
         type: Boolean,
         reflect: true,
@@ -52,12 +56,16 @@ export class LionButtonSwitch extends LionButton {
   constructor() {
     super();
     this.type = 'button';
+    this.disabled = false;
     this.checked = false;
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.__toggleStateHandler = () => {
+      if (this.disabled) {
+        return;
+      }
       this.checked = !this.checked;
       this.dispatchEvent(
         new CustomEvent('checked-changed', {

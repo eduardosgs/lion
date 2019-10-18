@@ -13,6 +13,12 @@ storiesOf('Forms|Switch', module)
       <lion-input-switch label="Label" help-text="Help text"> </lion-input-switch>
     `,
   )
+  .add(
+    'Disabled',
+    () => html`
+      <lion-input-switch label="Disabled label" disabled> </lion-input-switch>
+    `,
+  )
   .add('Validation', () => {
     const isTrue = value => value && value.checked && value.checked === true;
     const isTrueValidator = (...factoryParams) => [

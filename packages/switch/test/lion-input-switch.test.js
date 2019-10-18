@@ -15,6 +15,22 @@ describe('lion-input-switch', () => {
     expect(el.inputElement).to.be.an.instanceof(LionButton);
   });
 
+  it('should trickle "disabled" state to child button', async () => {
+    // given
+    const el = await fixture(html`
+      <lion-input-switch disabled></lion-input-switch>
+    `);
+    // then
+    expect(el.inputElement.disabled).to.be.true;
+    expect(el.inputElement.hasAttribute('disabled')).to.be.true;
+    // when
+    el.disabled = false;
+    await el.updateComplete;
+    // then
+    expect(el.inputElement.disabled).to.be.false;
+    expect(el.inputElement.hasAttribute('disabled')).to.be.false;
+  });
+
   it('should trickle "checked" state to child button', async () => {
     // given
     const uncheckedEl = await fixture(html`
