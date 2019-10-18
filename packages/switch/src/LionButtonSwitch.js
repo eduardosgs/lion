@@ -57,7 +57,7 @@ export class LionButtonSwitch extends LionButton {
 
   connectedCallback() {
     super.connectedCallback();
-    this._clickHandler = () => {
+    this.__toggleStateHandler = () => {
       this.checked = !this.checked;
       this.dispatchEvent(
         new CustomEvent('checked-changed', {
@@ -67,14 +67,14 @@ export class LionButtonSwitch extends LionButton {
         }),
       );
     };
-    this.addEventListener('click', this._clickHandler);
+    this.addEventListener('click', this.__toggleStateHandler);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    if (this._clickHandler) {
-      this.removeEventListener('click', this._clickHandler);
-      this._clickHandler = null;
+    if (this.__toggleStateHandler) {
+      this.removeEventListener('click', this.__toggleStateHandler);
+      this.__toggleStateHandler = null;
     }
   }
 
